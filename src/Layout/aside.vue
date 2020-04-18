@@ -22,8 +22,8 @@ import { routes as menus } from "../router.js";
 console.log("menus", menus);
 export default {
   watch: {
-    $route(a) {
-      console.log(a);
+    $route(route) {
+      this.defaultActive = route.path;
     }
   },
   data() {
