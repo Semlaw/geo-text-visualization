@@ -4,7 +4,8 @@
       <router-link to="/introduce">POLYGON</router-link>或
       <router-link to="/introduce">MULTIPOLYGON</router-link>文本
     </div>
-    <el-input class="mt-10" type="textarea"
+    <el-input class="mt-10"
+              type="textarea"
               :autosize="{ minRows: 2, maxRows: 4}"
               placeholder="请输入POLYGON或MULTIPOLYGON文本"
               v-model="geoText" />
@@ -50,8 +51,8 @@ const multipolygonText =
 export default {
   data() {
     return {
-      geoText:multipolygonText,
-      formatedMultipolygonText: '',
+      geoText: multipolygonText,
+      formatedMultipolygonText: "",
       polygonWithFormatedTxtList: [] // [{polygon,formatedText}]
     };
   },
@@ -63,8 +64,10 @@ export default {
   },
   methods: {
     formatHandle() {
-      const list = commonTextFormat(this.geoText);
+      const { geoText } = this;
+      const list = commonTextFormat(geoText);
       this.polygonWithFormatedTxtList = list;
+      this.setHistory(geoText);
       console.log("val", list);
     },
     polygonShow(polygon) {
@@ -77,11 +80,31 @@ export default {
     },
     gotoGeoMap(queryData) {
       const payload = encodeURIComponent(JSON.stringify(queryData));
-      window.open(`${location.origin}${location.pathname}#/geoMap?geodata=${payload}`);
+      window.open(
+        `${location.origin}${location.pathname}#/geoMap?geodata=${payload}`
+      );
+    },
+    setHistory(val) {
+      try {
+        localStorage.setItem("geoText", val);
+      } catch (e) {
+        // todo
+      }
+    },
+    initGeoTextFromHistory() {
+      try {
+        const geoText = localStorage.getItem("geoText");
+        if (geoText) {
+          this.geoText = geoText;
+        }
+      } catch (e) {
+        // todo
+      }
     }
   },
-  mounted(){
-    this.formatHandle()
+  mounted() {
+    this.initGeoTextFromHistory();
+    this.formatHandle();
   }
 };
 </script>
