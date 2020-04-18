@@ -1,19 +1,26 @@
 <template>
-  <div id="app">
-    <img alt="Vue logo" src="./assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
+  <div class="full-container">
+    <Aside />
+    <div class="main-container">
+      <router-view></router-view>
+    </div>
   </div>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
+// import HelloWorld from "./components/HelloWorld.vue";
+import Aside from "./Layout/aside";
 
 export default {
-  name: 'App',
+  name: "App",
+  data() {
+    return {};
+  },
   components: {
-    HelloWorld
+    Aside
+    // HelloWorld
   }
-}
+};
 </script>
 
 <style>
@@ -24,5 +31,18 @@ export default {
   text-align: center;
   color: #2c3e50;
   margin-top: 60px;
+}
+body,
+html {
+  margin: 0;
+}
+.full-container {
+  height: 100vh;
+  display: flex;
+}
+.main-container {
+  height: 100vh;
+  overflow-y: auto;
+  flex: 1;
 }
 </style>
