@@ -20,13 +20,13 @@
            v-for="(polygon,idx) in polygonWithFormatedTxtList"
            :key="idx">
         <div v-html="polygon.formatedText"></div>
-        <div>point个数：{{polygon.polygon.length}}</div>
+        <div>point个数：{{polygon.polygon&&polygon.polygon.length}}</div>
         <div class="geo-toolrow">
           <el-button type="success"
                      @click="polygonShow(polygon.polygon)">可视化</el-button>
         </div>
       </div>
-      <div>polygon个数：{{polygonWithFormatedTxtList.length}}</div>
+      <div>polygon个数：{{polygonWithFormatedTxtList&&polygonWithFormatedTxtList.length}}</div>
       <div class="geo-toolrow">
         <el-button type="success"
                    @click="multipolygonShow(polygonWithFormatedTxtList)">可视化</el-button>
