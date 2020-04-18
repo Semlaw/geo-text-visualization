@@ -5,7 +5,7 @@ function resolve(dir) {
 }
 module.exports = {
   lintOnSave: true,
-  publicPath: process.env.NODE_ENV === 'production' ? 'http://senmao.gitee.io/geo-text-visualization/' : '',
+  publicPath: process.env.NODE_ENV === 'production' ? '/geo-text-visualization/' : '',
   chainWebpack: (config) => {
     config.resolve.alias
       .set('@$', resolve('src'))
