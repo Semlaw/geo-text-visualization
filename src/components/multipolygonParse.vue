@@ -77,7 +77,7 @@ export default {
     },
     gotoGeoMap(queryData) {
       const payload = encodeURIComponent(JSON.stringify(queryData));
-      window.open(`${location.origin}#/geoMap?geodata=${payload}`);
+      window.open(`${location.origin}${location.pathname}#/geoMap?geodata=${payload}`);
     }
   },
   mounted(){
