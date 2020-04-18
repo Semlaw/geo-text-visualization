@@ -8,17 +8,20 @@ export const routes = [
   {
     path: '/multipolygonParse',
     title: 'MULTIPOLYGON解析',
-    component: multipolygonParse
+    component: multipolygonParse,
+    icon:'el-icon-data-analysis',
   },
   {
     path: '/geoMap',
     title: 'GEO数据可视化',
-    component: geoMap
+    component: geoMap,
+    icon: 'el-icon-map-location',
   },
   {
     path: '/introduce',
     title: '数据格式介绍',
-    component: introduce
+    component: introduce,
+    icon: 'el-icon-info',
   }
 ]
 

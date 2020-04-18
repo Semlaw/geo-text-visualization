@@ -8,10 +8,8 @@
              class="el-menu-vertical-demo">
       <el-menu-item :key="idx"
                     :index="menu.path"
-                    v-for="(menu,idx) in menus"><i class="el-icon-location"></i>
-        <!-- <router-link :to="menu.state"> -->
+                    v-for="(menu,idx) in menus"><i :class="menu.icon"></i>
         {{menu.title}}
-        <!-- </router-link> -->
       </el-menu-item>
     </el-menu>
   </div>
