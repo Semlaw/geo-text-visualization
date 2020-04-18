@@ -4,7 +4,7 @@
       <router-link to="/introduce">POLYGON</router-link>或
       <router-link to="/introduce">MULTIPOLYGON</router-link>文本
     </div>
-    <el-input type="textarea"
+    <el-input class="mt-10" type="textarea"
               :autosize="{ minRows: 2, maxRows: 4}"
               placeholder="请输入POLYGON或MULTIPOLYGON文本"
               v-model="geoText" />
@@ -80,15 +80,15 @@ export default {
       window.open(`${location.origin}#/geoMap?geodata=${payload}`);
     }
   },
-  created() {
-    window.polygon = this;
+  mounted(){
+    this.formatHandle()
   }
 };
 </script>
 
 <style scoped>
 .view-container {
-  padding: 8px;
+  padding: 20px 8px;
 }
 .tooltip-row {
   margin-top: 10px;
