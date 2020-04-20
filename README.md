@@ -7,7 +7,7 @@
 - 点与点之间使用英文逗号分隔，点与点之间除了存在英文逗号，还可以存在空格。
 - 点集合使用 `((`和 `))`包裹，构成一个polygon。
 - polygon之间使用英文逗号分隔，polygon与polygon之间除了必须存在的英文逗号，还可以存在空格。
-- polygon集合用"MULTIPOLYGON `(`和`)`包裹。
+- polygon集合用`MULTIPOLYGON (`和`)`包裹。
 
 
 ### MULTIPOLYGON文本demo
