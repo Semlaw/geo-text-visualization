@@ -157,4 +157,7 @@ lng-value lat-value point-value polygon-value
 .polygon-value {
   background: #1890ff;
 }
+.error-value {
+    background: #F56C6C;
+}
 </style>
