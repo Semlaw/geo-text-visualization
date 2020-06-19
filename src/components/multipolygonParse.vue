@@ -1,36 +1,39 @@
 <template>
   <div class="view-container">
-    <div>输入
+    <div>
+      输入
       <router-link to="/introduce">POLYGON</router-link>或
       <router-link to="/introduce">MULTIPOLYGON</router-link>文本
     </div>
-    <el-input class="mt-10"
-              type="textarea"
-              :autosize="{ minRows: 2, maxRows: 4}"
-              placeholder="请输入POLYGON或MULTIPOLYGON文本"
-              v-model="geoText" />
-    <div class="tooltip-row"
-         :style="{color:validateText.color}">{{validateText.msg}}</div>
+    <el-input
+      class="mt-10"
+      type="textarea"
+      :autosize="{ minRows: 2, maxRows: 4}"
+      placeholder="请输入POLYGON或MULTIPOLYGON文本"
+      v-model="geoText"
+    />
+    <div class="tooltip-row" :style="{color:validateText.color}">{{validateText.msg}}</div>
     <div class="mt-10">
-      <el-button type="primary"
-                 @click="formatHandle">格式化</el-button>
+      <el-button type="primary" @click="formatHandle">格式化</el-button>
     </div>
-    <div class="polygonWithFormatedTxtListContainer"
-         v-show="polygonWithFormatedTxtList&&polygonWithFormatedTxtList.length">
-      <div class="polygonWithFormatedTxtList"
-           v-for="(polygon,idx) in polygonWithFormatedTxtList"
-           :key="idx">
+    <div
+      class="polygonWithFormatedTxtListContainer"
+      v-show="polygonWithFormatedTxtList&&polygonWithFormatedTxtList.length"
+    >
+      <div
+        class="polygonWithFormatedTxtList"
+        v-for="(polygon,idx) in polygonWithFormatedTxtList"
+        :key="idx"
+      >
         <div v-html="polygon.formatedText"></div>
         <div>point个数：{{polygon.polygon&&polygon.polygon.length}}</div>
         <div class="geo-toolrow">
-          <el-button type="success"
-                     @click="polygonShow(polygon.polygon)">可视化</el-button>
+          <el-button type="success" @click="polygonShow(polygon.polygon)">可视化</el-button>
         </div>
       </div>
       <div>polygon个数：{{polygonWithFormatedTxtList&&polygonWithFormatedTxtList.length}}</div>
       <div class="geo-toolrow">
-        <el-button type="success"
-                   @click="multipolygonShow(polygonWithFormatedTxtList)">可视化</el-button>
+        <el-button type="success" @click="multipolygonShow(polygonWithFormatedTxtList)">可视化</el-button>
       </div>
     </div>
   </div>
@@ -79,9 +82,10 @@ export default {
       this.gotoGeoMap(polygonList);
     },
     gotoGeoMap(queryData) {
-      const payload = encodeURIComponent(JSON.stringify(queryData));
+      const payload = JSON.stringify(queryData);
+      localStorage.setItem("geodata", payload);
       window.open(
-        `${location.origin}${location.pathname}#/geoMap?geodata=${payload}`
+        `${location.origin}${location.pathname}#/geoMap`
       );
     },
     setHistory(val) {
