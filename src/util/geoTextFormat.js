@@ -2,6 +2,11 @@ import { parseMultiPolygon, parsePolygon } from './geoParse';
 import { polygonPrefixDetect, multipolygonPrefixDetect } from './geoTextReg';
 
 
+
+function getEmptyClass (val) {
+  return val ? '' : 'error-value'
+}
+
 // eslint-disable-next-line no-unused-vars
 function wrapper (text, tagName = 'span', className = '') {
   return `<${tagName} class="${className}">${text}</${tagName}>`;
@@ -18,8 +23,8 @@ export function multipolygonTextFormat (multipolygonText) {
   const polygonWithFormatedTxtList = dataList.map(polygon => {
     const polygonInnerText = polygon.map(point => {
       const pointInnerText = [
-        wrapper(point[0], 'span', 'lng-value geo-value'),
-        wrapper(point[1], 'span', 'lat-value geo-value'),
+        wrapper(point[0], 'span', getEmptyClass(point[0]) + ' lng-value geo-value'),
+        wrapper(point[1], 'span', getEmptyClass(point[1]) + ' lat-value geo-value'),
       ];
       return wrapper(pointInnerText.join(' '), 'span', 'point-value geo-value');
     }).join(',');
@@ -37,8 +42,8 @@ export function polygonTextFormat (polygonText) {
 
   const polygonInnerText = polygon.map(point => {
     const pointInnerText = [
-      wrapper(point[0], 'span', 'lng-value geo-value'),
-      wrapper(point[1], 'span', 'lat-value geo-value'),
+      wrapper(point[0], 'span', getEmptyClass(point[0]) + ' lng-value geo-value'),
+      wrapper(point[1], 'span', getEmptyClass(point[1]) + ' lat-value geo-value'),
     ];
     return wrapper(pointInnerText.join(' '), 'span', 'point-value geo-value');
   }).join(',');
