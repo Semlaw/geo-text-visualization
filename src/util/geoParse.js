@@ -37,7 +37,7 @@ export function parsePolygon(str) {
 export function parseMultiPolygon (multipolygonText) {
   if (!multipolygonText) return [];
   // 去除  首部`MULTIPOLYGON (`和尾部`)`。
-  const noWrapperStr = multipolygonText.replace(/^\s*MULTIPOLYGON\s+\(/, '').replace(/\)\s*$/, '');
+  const noWrapperStr = multipolygonText.replace(/^\s*MULTIPOLYGON\s*\(/, '').replace(/\)\s*$/, '');
   const polygonStrList = noWrapperStr.split(/,(?=\s*\(\()/g);
   return polygonStrList.map(onePolygonStr => onePolygonStr
     // 去除首部 `((`和尾部`))`
